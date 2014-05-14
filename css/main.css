@@ -8,12 +8,13 @@
   transition: all 0.5s ease;
   opacity: 1;
   -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 600;
+  -webkit-perspective: 500;
+  -webkit-transform: perspective(500);
 }
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
@@ -111,6 +112,8 @@ textarea {
   margin: 10.9375rem auto 0;
 }
 .card {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   position: relative;
   width: 12.5%;
   height: 10.9375rem;
@@ -129,12 +132,13 @@ textarea {
   transition: all 0.5s ease;
   opacity: 1;
   -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 600;
+  -webkit-perspective: 500;
+  -webkit-transform: perspective(500);
   background: #fff;
 }
 .card-back {
@@ -147,12 +151,13 @@ textarea {
   transition: all 0.5s ease;
   opacity: 1;
   -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 600;
+  -webkit-perspective: 500;
+  -webkit-transform: perspective(500);
   background: #000;
   color: #fff;
   font-size: 35px;

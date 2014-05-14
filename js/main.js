@@ -62,16 +62,15 @@ var Cards = (function(){
 			if( i == 2 ) {
 				setTimeout(function(){
 					clicked.forEach(function(n) {
-						$('.card').eq(n).addClass('flip');
 						if(clicked_name == card.data('id'))
 						{
 							setTimeout(function(){
 								$('.card').eq(n).css('opacity', 0);
-							}, 2000);
+							}, 1000);
 						} else {
 							setTimeout(function(){
-								$('.card').eq(n).removeClass('flip').removeClass('clicked');
-							}, 2000);
+								$('.card').eq(n).removeClass('flip').removeClass('flip');
+							}, 1000);
 						}
 					});
 					i = 0;
