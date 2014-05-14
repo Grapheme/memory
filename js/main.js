@@ -1,31 +1,37 @@
 /* Cards module */
 
 var Cards = (function(){
-	var i = 0;
-	var clicked = [];
-	var clicked_name = false;
-	var cardtype = [
-		{name: 1},
-		{name: 2},
-		{name: 3},
-		{name: 4},
-		{name: 5},
-		{name: 6},
-		{name: 7},
-		{name: 8}
-	];
-	var time = 200;
-	var speed = 100;
+	var i = 0,
+		clicked = [],
+		clicked_name = false,
+		type = false,
+		sup_content = false,
+		cardtype = [
+
+			{name: 'smoke', type: 'super', content: 'меньше мать его дыма'},
+			{name: 'xyu', type: 'super', content: 'Cuase i got nothing to hide, cuz i true'},
+			{name: 3, type: 'normal'},
+			{name: 4, type: 'normal'},
+			{name: 5, type: 'normal'},
+			{name: 6, type: 'normal'},
+			{name: 7, type: 'normal'},
+			{name: 8, type: 'normal'}
+
+		],
+		newCardType = [],
+		time = 200,
+		speed = 100;
 
 	return {
 		init: function() {
 			$.each(cardtype, function(index, value) {
-				cardtype.push(value);
+				for(var i = 0; i < 2; i++) newCardType.push(value);
 			});
 
-			this.shuffle(cardtype);
-			$.each(cardtype, function(index, value) {
-				$('.cards-block').append('<div class="card flip" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
+			this.shuffle(newCardType);
+			$.each(newCardType, function(index, value) {
+				$('.cards-block').append('<div class="card flip" data-type="' + value.type + '" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
+				$('.container').append('<a href="#" class="start-btn">Начать!</a>');
 			});
 
 			$(document).on('click touchstart', '.card', function(){
@@ -33,7 +39,17 @@ var Cards = (function(){
 			});
 			$(document).on('click touchstart', '.start-btn', function(){
 				Cards.start();
+				return false;
 			});
+		},
+		destroy: function() {
+			$('.card').remove();
+			$('.start-btn').remove();
+			newCardType = [];
+		},
+		reinit: function() {
+			this.destroy();
+			this.init();
 		},
 		start: function() {
 			$.each( $('.card'), function(){
@@ -42,6 +58,7 @@ var Cards = (function(){
 					that.removeClass('flip');
 				}, time += speed );
 			});
+			$('.start-btn').remove();
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -60,6 +77,11 @@ var Cards = (function(){
 				clicked_name = card.data('id');
 			}
 			if( i == 2 ) {
+				type = card.data('type');
+				if(clicked_name == card.data('id') && type == 'super')
+				{
+					alert('super');
+				}
 				setTimeout(function(){
 					clicked.forEach(function(n) {
 						if(clicked_name == card.data('id'))
