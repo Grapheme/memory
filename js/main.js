@@ -20,7 +20,8 @@ var Cards = (function(){
 		],
 		newCardType = [],
 		time = 200,
-		speed = 100;
+		speed = 100,
+		coolDown = false;
 
 	return {
 		init: function() {
@@ -41,6 +42,7 @@ var Cards = (function(){
 				Cards.start();
 				return false;
 			});
+
 		},
 		destroy: function() {
 			$('.card').remove();
