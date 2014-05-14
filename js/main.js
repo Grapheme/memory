@@ -1,7 +1,3 @@
-$(document).on('click touchstart', '.card', function(){
-	Cards.click($(this));
-});
-
 /* Cards module */
 
 var Cards = (function(){
@@ -32,16 +28,20 @@ var Cards = (function(){
 				$('.cards-block').append('<div class="card flip" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
 			});
 
-
+			$(document).on('click touchstart', '.card', function(){
+				Cards.click($(this));
+			});
+			$(document).on('click touchstart', '.start-btn', function(){
+				Cards.start();
+			});
+		},
+		start: function() {
 			$.each( $('.card'), function(){
 				var that = $(this);
 				var timer = setTimeout( function(){
 					that.removeClass('flip');
 				}, time += speed );
 			});
-			/*setTimeout(function(){
-				$('.card').removeClass('flip');
-			}, 3000);*/
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);

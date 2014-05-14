@@ -172,8 +172,20 @@ textarea {
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
-.clicked .card-front {
-  opacity: .5;
+.start-btn {
+  position: absolute;
+  top: 37.1875rem;
+  width: 15.625rem;
+  height: 80px;
+  line-height: 80px;
+  left: 50%;
+  margin-left: -7.8125rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  background: #222;
 }
 /* ==========================================================================
    Helper classes
