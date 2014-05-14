@@ -18,6 +18,8 @@ var Cards = (function(){
 		{name: 7},
 		{name: 8}
 	];
+	var time = 200;
+	var speed = 100;
 
 	return {
 		init: function() {
@@ -30,9 +32,16 @@ var Cards = (function(){
 				$('.cards-block').append('<div class="card flip" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
 			});
 
-			setTimeout(function(){
+
+			$.each( $('.card'), function(){
+				var that = $(this);
+				var timer = setTimeout( function(){
+					that.removeClass('flip');
+				}, time += speed );
+			});
+			/*setTimeout(function(){
 				$('.card').removeClass('flip');
-			}, 3000);
+			}, 3000);*/
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
