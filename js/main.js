@@ -1,7 +1,3 @@
-$(document).on('click touchstart', '.card', function(){
-	Cards.click($(this));
-});
-
 /* Cards module */
 
 var Cards = (function(){
@@ -33,10 +29,15 @@ var Cards = (function(){
 				$('.cards-block').append('<div class="card flip" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
 			});
 
-			this.hideCards();
-			
+			$(document).on('click touchstart', '.card', function(){
+				Cards.click($(this));
+			});
+			$(document).on('click touchstart', '.start-btn', function(){
+				Cards.start();
+			});
+
 		},
-		hideCards: function() {
+		start: function() {
 			$.each( $('.card'), function(){
 				var that = $(this);
 				var timer = setTimeout( function(){
@@ -63,16 +64,15 @@ var Cards = (function(){
 			if( i == 2 ) {
 				setTimeout(function(){
 					clicked.forEach(function(n) {
-						$('.card').eq(n).addClass('flip');
 						if(clicked_name == card.data('id'))
 						{
 							setTimeout(function(){
 								$('.card').eq(n).css('opacity', 0);
-							}, 2000);
+							}, 1000);
 						} else {
 							setTimeout(function(){
-								$('.card').eq(n).removeClass('flip').removeClass('clicked');
-							}, 2000);
+								$('.card').eq(n).removeClass('flip').removeClass('flip');
+							}, 1000);
 						}
 					});
 					i = 0;
