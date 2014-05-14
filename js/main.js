@@ -89,7 +89,7 @@ var Cards = (function(){
 				type = card.data('type');
 				if(clicked_name == card.data('id') && type == 'super')
 				{
-					alert(card.data('content'));
+					console.log(card.data('content'));
 				}
 				setTimeout(function(){
 					clicked.forEach(function(n) {
