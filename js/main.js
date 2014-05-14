@@ -1,5 +1,7 @@
 /* Cards module */
 
+document.ontouchmove = function(e){ e.preventDefault(); }
+
 var Cards = (function(){
 	var i = 0,
 		clicked = [],
@@ -99,7 +101,7 @@ var Cards = (function(){
 								$('.card').eq(n).css('opacity', 0);
 								tilesFlipped += 2;
 								if(tilesFlipped.length >= newCardType.length) {
-									alert('finish!');
+									Cards.reinit();
 								}
 							}, 500);
 						} else {
