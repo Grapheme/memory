@@ -6,6 +6,10 @@ var cards = {
 	i: 0,
 	clicked: false,
 	Click: function(card) {
+		if(card.hasClass('flip'))
+		{
+			return;
+		}
 		var obj = this;
 		if(obj.i < 2)
 		{
