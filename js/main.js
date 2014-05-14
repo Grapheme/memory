@@ -5,7 +5,8 @@ var Cards = (function(){
 		clicked = [],
 		clicked_name = false,
 		time = 200,
-		speed = 100;
+		speed = 100,
+		coolDown = false;
 
 	var cardtype = [
 		{name: 1},
