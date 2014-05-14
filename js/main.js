@@ -20,7 +20,7 @@ var Cards = (function(){
 			{name: 8, type: 'normal'}
 
 		],
-		tilesFlipped = [],
+		tilesFlipped = 0,
 		newCardType = [],
 		time = 200,
 		speed = 100,
@@ -54,20 +54,22 @@ var Cards = (function(){
 			$('.card').remove();
 			$('.start-btn').remove();
 			newCardType = [];
+			tilesFlipped = 0;
 		},
 		reinit: function() {
 			this.destroy();
 			this.init();
 		},
 		start: function() {
+			var oldtime = time;
 			$.each( $('.card'), function(){
 				var that = $(this);
 				var timer = setTimeout( function(){
 					that.removeClass('flip');
 				}, time += speed );
 			});
+			time = oldtime;
 			$('.start-btn').remove();
-			console.log(newCardType);
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -99,10 +101,11 @@ var Cards = (function(){
 						{
 							setTimeout(function(){
 								$('.card').eq(n).css('opacity', 0);
-								tilesFlipped += 2;
-								if(tilesFlipped.length >= newCardType.length) {
+								tilesFlipped += 1;
+								if(tilesFlipped >= newCardType.length) {
 									Cards.reinit();
 								}
+								console.log();
 							}, 500);
 						} else {
 							setTimeout(function(){
