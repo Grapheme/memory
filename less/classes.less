@@ -1,0 +1,16 @@
+.transition(@elem: all, @duration: .5s, @effect: ease) {
+	-webkit-transition: @elem @duration @effect;
+	transition: @elem @duration @effect;
+}
+
+.card-class {
+	position: absolute;
+	top: @cardMrg; right: @cardMrg; bottom: @cardMrg; left: @cardMrg;
+	.transition;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}

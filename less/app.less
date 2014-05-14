@@ -1,6 +1,41 @@
-.test {
+.container {
 	position: absolute;
-	width: 50rem / @htmlFontSize;
-	height: 50rem / @htmlFontSize;
+	top: 0; right: 0; bottom: 0; left: 0;
+	background: #6363C2;
+}
+
+.cards-block {
+	width: 1000rem / @htmlFontSize;
+	height: @cardsHeight;
+	margin: @cardsHeight / 2 auto 0;
+}
+
+.card {
+	position: relative;
+	width: 100% / 8;
+	height: @cardsHeight / 2;
+	float: left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.card-front {
+	.card-class;
+	background: #fff;
+}
+
+.card-back {
+	.card-class;
 	background: #000;
+	-webkit-transform: rotateY(-180deg);
+}
+
+.flip {
+	.card-back {
+		-webkit-transform: rotateY(0);
+	}
+	.card-front {
+		-webkit-transform: rotateY(-180deg);
+	}
 }
