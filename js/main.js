@@ -18,6 +18,7 @@ var Cards = (function(){
 			{name: 8, type: 'normal'}
 
 		],
+		tilesFlipped = [],
 		newCardType = [],
 		time = 200,
 		speed = 100,
@@ -61,6 +62,7 @@ var Cards = (function(){
 				}, time += speed );
 			});
 			$('.start-btn').remove();
+			console.log(newCardType);
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -78,7 +80,9 @@ var Cards = (function(){
 			if( i == 1 ) {
 				clicked_name = card.data('id');
 			}
-			if( i == 2 ) {
+			if( i == 2 && !coolDown ) {
+				coolDown = true;
+
 				type = card.data('type');
 				if(clicked_name == card.data('id') && type == 'super')
 				{
@@ -97,8 +101,13 @@ var Cards = (function(){
 							}, 1000);
 						}
 					});
-					i = 0;
-					clicked = [];
+
+					setTimeout( function(){ 
+						coolDown = false;
+						i = 0;
+						clicked = [];
+					}, 1000);
+					
 				}, 1000);
 			}
 		}
