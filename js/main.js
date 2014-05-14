@@ -97,21 +97,25 @@ var Cards = (function(){
 						{
 							setTimeout(function(){
 								$('.card').eq(n).css('opacity', 0);
-							}, 1000);
+								tilesFlipped += 2;
+								if(tilesFlipped.length >= newCardType.length) {
+									alert('finish!');
+								}
+							}, 500);
 						} else {
 							setTimeout(function(){
 								$('.card').eq(n).removeClass('flip').removeClass('flip');
-							}, 1000);
+							}, 500);
 						}
 					});
 
-					setTimeout( function(){ 
+					setTimeout( function(){
 						coolDown = false;
 						i = 0;
 						clicked = [];
-					}, 1000);
+					}, 100);
 					
-				}, 1000);
+				}, 100);
 			}
 		}
 	};
