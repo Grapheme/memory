@@ -5,6 +5,7 @@
 }
 
 .cards-block {
+	.transition;
 	width: 1000rem / @htmlFontSize;
 	height: @cardsHeight;
 	margin: @cardsHeight / 2 auto 0;
@@ -28,6 +29,8 @@
 .card-back {
 	.card-class;
 	background: #000;
+	color: #fff;
+	font-size: 35px;
 	-webkit-transform: rotateY(-180deg);
 }
 
@@ -37,5 +40,11 @@
 	}
 	.card-front {
 		-webkit-transform: rotateY(-180deg);
+	}
+}
+
+.clicked {
+	.card-front {
+		opacity: .5;
 	}
 }
