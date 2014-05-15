@@ -65,11 +65,13 @@ var Cards = (function(){
 			$('.super-card').remove();
 			newCardType = [];
 			tilesFlipped = 0;
+			super_count = 0;
 		},
 		reinit: function() {
+			var obj = this;
 			setTimeout(function(){
-				this.destroy();
-				this.init();
+				obj.destroy();
+				obj.init();
 			}, 1000);
 			$('.container, .start-game').hide().removeClass('opened').show();
 		},
