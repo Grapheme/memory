@@ -10,14 +10,14 @@ var Cards = (function(){
 		sup_content = false,
 		cardtype = [
 
-			{name: 'smoke', type: 'super', content: 'меньше мать его дыма'},
-			{name: 'xyu', type: 'super', content: 'Cuase i got nothing to hide, cuz i true'},
-			{name: 3, type: 'normal'},
-			{name: 4, type: 'normal'},
-			{name: 5, type: 'normal'},
-			{name: 6, type: 'normal'},
-			{name: 7, type: 'normal'},
-			{name: 8, type: 'normal'}
+			{name: 'crown', type: 'super', content: 'меньше мать его дыма'},
+			{name: 'less_smell', type: 'super', content: 'Cuase i got nothing to hide, cuz i true'},
+			{name: 'white_sheet', type: 'normal'},
+			{name: 'ac', type: 'normal'},
+			{name: 'wp', type: 'normal'},
+			{name: 'ff', type: 'normal'},
+			{name: 'night', type: 'normal'},
+			{name: 'vpech', type: 'normal'}
 
 		],
 		tilesFlipped = 0,
@@ -34,7 +34,7 @@ var Cards = (function(){
 
 			this.shuffle(newCardType);
 			$.each(newCardType, function(index, value) {
-				$('.cards-block').append('<div class="card flip" data-type="' + value.type + '" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
+				$('.cards-block').append('<div class="card flip" data-type="' + value.type + '" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back"><img src="img/cards/'+ value.name +'.png"></div></div>');
 				if(value.content) {
 					$('.card[data-id=' + value.name + ']').attr('data-content', value.content);
 				}
