@@ -59,7 +59,7 @@ var Cards = (function(){
 				$('.container').addClass('opened');
 			});
 			$(document).on('click touchstart', '.bot', function(){
-				Cards.bot();			
+				Cards.bot();
 			});
 
 
@@ -92,6 +92,7 @@ var Cards = (function(){
 		finish: function() {
 			setTimeout( function() { $('.cigarbox').addClass('opened'); }, 1000 );
 			$('.super-card').addClass('opened');
+			setTimeout( function() { Cards.reinit(); }, 5000 );
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
