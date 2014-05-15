@@ -35,11 +35,11 @@ var Cards = (function(){
 			this.shuffle(newCardType);
 			$.each(newCardType, function(index, value) {
 				$('.cards-block').append('<div class="card flip" data-type="' + value.type + '" data-id="' + value.name + '"><div class="card-front"></div><div class="card-back">'+ value.name +'</div></div>');
-				$('.container').append('<a href="#" class="start-btn">Начать!</a>');
 				if(value.content) {
 					$('.card[data-id=' + value.name + ']').attr('data-content', value.content);
 				}
 			});
+			$('.container').append('<a href="#" class="start-btn">Начать!</a>');
 
 			$(document).on('click touchstart', '.card', function(){
 				Cards.click($(this));

@@ -139,7 +139,7 @@ textarea {
   backface-visibility: hidden;
   -webkit-perspective: 500;
   -webkit-transform: perspective(500);
-  background: #fff;
+  background: url(../img/back.jpg) no-repeat 0 0 / 100% 100%;
 }
 .card-back {
   position: absolute;
@@ -158,8 +158,8 @@ textarea {
   backface-visibility: hidden;
   -webkit-perspective: 500;
   -webkit-transform: perspective(500);
-  background: url(../img/back.jpg) no-repeat 0 0 / 100% 100%;
   color: #fff;
+  background: #000;
   font-size: 35px;
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
