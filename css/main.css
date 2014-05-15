@@ -113,7 +113,7 @@ textarea {
   z-index: 2;
 }
 .container.opened {
-  left: 0;
+  left: 50%;
 }
 .cards-block {
   -webkit-transition: all 0.5s ease;
