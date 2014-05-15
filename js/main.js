@@ -64,6 +64,7 @@ var Cards = (function(){
 		destroy: function() {
 			$('.card').remove();
 			$('.start-btn').remove();
+			$('.super-card').remove();
 			newCardType = [];
 			tilesFlipped = 0;
 		},
