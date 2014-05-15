@@ -1,6 +1,16 @@
 /* Cards module */
 
-document.ontouchmove = function(e){ e.preventDefault(); }
+document.ontouchmove = function(e){ e.preventDefault(); };
+
+var Nav = (function(){
+	return {
+		init: function() {
+			$(document).on('click touchstart', '.drives', function(){
+				$('.start-game').addClass('opened');
+			});
+		}
+	};
+})();
 
 var Cards = (function(){
 	var i = 0,
@@ -126,5 +136,6 @@ var Cards = (function(){
 	};
 })();
 
+Nav.init();
 Cards.init();
 
