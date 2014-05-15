@@ -29,11 +29,12 @@
 
 .card-back {
 	.card-class;
-	background: #000;
+	background: url(../img/back.jpg) no-repeat 0 0 e('/') 100% 100%;
 	color: #fff;
 	font-size: 35px;
 	-webkit-transform: rotateY(-180deg);
 	transform: rotateY(-180deg);
+	border-radius: 9px;
 }
 
 .flip {
@@ -47,18 +48,94 @@
 	}
 }
 
-.start-btn {
+/* Enter */
+body:after {
+	content: "";
 	position: absolute;
-	top: @cardsHeight*1.7;
-	width: 250rem / @htmlFontSize;
-	height: 80px;
-	line-height: 80px;
-	left: 50%;
-	margin-left: -250rem / @htmlFontSize / 2;
-	color: #fff;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-size: 20px;
-	text-align: center;
-	background: #222;
+	top: 0;
+	right: 3%;
+	width: 281rem / @htmlFontSize / 2;
+	height: 224rem / @htmlFontSize / 2;
+
+	background: url(../img/shieldick.png) no-repeat 0 0 e('/') 100% 100%;
+
+}
+.enter {
+	.full-abs;
+	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
+
+	.chs-act {
+		.box-sizing;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 696rem / @htmlFontSize / 2;
+		height: 230rem / @htmlFontSize / 2;
+		margin: 0 0 0 -696rem / @htmlFontSize / 4;
+		padding: 120rem / @htmlFontSize / 2 0 0;
+
+		background: rgba(0, 92, 178, .25);
+		text-align: center;
+		text-transform: uppercase;
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 108rem / @htmlFontSize / 2 696rem / @htmlFontSize / 4 0 696rem / @htmlFontSize / 4;
+			border-color: rgba(0, 92, 178, .25) transparent transparent transparent;
+		}
+	}
+
+	.acts {
+		margin: 650rem / @htmlFontSize / 2 0 0;
+		padding: 0;
+		text-align: center;
+
+		.acts-li {
+			display: inline-block;
+			width: 444rem / @htmlFontSize / 2;
+			height: 208rem / @htmlFontSize / 2;
+			margin: 0 6rem / @htmlFontSize 0 0;
+
+			border: 1px solid #000;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+}
+
+.start-game {
+	.full-abs;
+	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
+
+	.start-btn {
+		position: absolute;
+		bottom: 151rem / @htmlFontSize / 3;
+		left: 50%;
+		display: inline-block;
+		width: 444rem / @htmlFontSize / 2;
+		height: 208rem / @htmlFontSize / 2;
+		margin: 0 6rem / @htmlFontSize 0 -444rem / @htmlFontSize / 4;
+
+		border: 1px solid #000;
+	}
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 870rem / @htmlFontSize / 2;
+		height: 856rem / @htmlFontSize / 2;
+		margin: -856rem / @htmlFontSize / 4 0 0 -870px / 4;
+
+		background: url(../img/logo.png) no-repeat center 0 e('/') 100% 100%;
+	}
 }
