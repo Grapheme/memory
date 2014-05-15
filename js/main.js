@@ -50,13 +50,13 @@ var Cards = (function(){
 					$('.card[data-id=' + value.name + ']').attr('data-content', value.content);
 				}
 			});
-			$('.container').append('<a href="#" class="start-btn">Начать!</a>');
 
 			$(document).on('click touchstart', '.card', function(){
 				Cards.click($(this));
 			});
 			$(document).on('click touchstart', '.start-btn', function(){
-				Cards.start();
+				$('.container').addClass('opened');
+				setTimeout( function() { Cards.start(); }, 3000 );
 				return false;
 			});
 
