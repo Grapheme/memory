@@ -101,8 +101,8 @@ textarea {
    Author's custom styles
    ========================================================================== */
 .container {
-  -webkit-transition: left 1s ease-in-out;
-  transition: left 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
   position: absolute;
   top: 0;
   left: 100%;
@@ -110,7 +110,7 @@ textarea {
   height: 100%;
   background: url(../img/bg.jpg) no-repeat 0 0 / 100% 100%;
   overflow: hidden;
-  z-index: 2;
+  z-index: 3;
 }
 .container.opened {
   left: 0;
