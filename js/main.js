@@ -146,6 +146,20 @@ var Cards = (function(){
 					
 				}, 100);
 			}
+		},
+		bot: function() {
+			var bot_array = [];
+			var i = 0;
+			$.each(cardtype, function(index, value) {
+				bot_array.push(value.name);
+			});
+			int = setInterval(function(){
+				$('.card[data-id=' + bot_array[i] + ']').trigger('click');
+				i++;
+				if(i == 8) {
+					clearInterval(int);
+				}
+			}, 250);
 		}
 	};
 })();
