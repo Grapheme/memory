@@ -169,7 +169,7 @@ var Cards = (function(){
 				if(i == 8) {
 					clearInterval(int);
 				}
-			}, 400);
+			}, 700);
 		}
 	};
 })();
