@@ -62,7 +62,6 @@ var Cards = (function(){
 		},
 		destroy: function() {
 			$('.card').remove();
-			$('.start-btn').remove();
 			$('.super-card').remove();
 			newCardType = [];
 			tilesFlipped = 0;
@@ -80,7 +79,6 @@ var Cards = (function(){
 				}, time += speed );
 			});
 			time = oldtime;
-			$('.start-btn').remove();
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -124,7 +122,10 @@ var Cards = (function(){
 								$('.card').eq(n).css('opacity', 0);
 								tilesFlipped += 1;
 								if(tilesFlipped >= newCardType.length) {
-									Cards.reinit();
+									setTimeout(function(){
+										Cards.reinit();
+									}, 1000);
+									$('.container, .start-game').hide().removeClass('opened').show();
 								}
 								console.log();
 							}, 500);
