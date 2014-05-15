@@ -34,7 +34,7 @@
 	    }
 
 	    &.opened {
-	    	bottom: 10rem / @htmlFontSize;
+	    	bottom: 50rem / @htmlFontSize;
 	    	opacity: 1;
 	    }
 	}
@@ -260,6 +260,10 @@ body:after {
 		-ms-transform: translateY(0);
 		transform: translateY(0);
 		opacity: 1;
+	}
+	&.opened {
+		.transition(all, 2s, ease);
+		bottom: 30em;
 	}
 
 	&.to-left {

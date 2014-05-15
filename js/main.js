@@ -56,7 +56,7 @@ var Cards = (function(){
 			});
 			$(document).on('click touchstart', '.start-btn', function(){
 				setTimeout( function() { Cards.start(); }, 3000 );
-				$('.container').addClass('opened');				
+				$('.container').addClass('opened');
 			});
 			$(document).on('click touchstart', '.bot', function(){
 				Cards.bot();			
@@ -88,6 +88,10 @@ var Cards = (function(){
 				}, time += speed );
 			});
 			time = oldtime;
+		},
+		finish: function() {
+			setTimeout( function() { $('.cigarbox').addClass('opened'); }, 1000 );
+			$('.super-card').addClass('opened');
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -131,7 +135,8 @@ var Cards = (function(){
 								$('.card').eq(n).css('opacity', 0);
 								tilesFlipped += 1;
 								if(tilesFlipped >= newCardType.length) {
-									Cards.reinit();
+									//Cards.reinit();
+									Cards.finish();
 								}
 								console.log();
 							}, 500);

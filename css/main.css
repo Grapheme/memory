@@ -133,7 +133,7 @@ textarea {
   height: 100%;
 }
 .container .cigarbox.opened {
-  bottom: 0.625rem;
+  bottom: 3.125rem;
   opacity: 1;
 }
 .cards-block {
@@ -371,6 +371,11 @@ body:after {
   -ms-transform: translateY(0);
   transform: translateY(0);
   opacity: 1;
+}
+.super-card.opened {
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+  bottom: 30em;
 }
 .super-card.to-left {
   margin-left: -18.75rem;
