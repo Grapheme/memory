@@ -67,8 +67,11 @@ var Cards = (function(){
 			tilesFlipped = 0;
 		},
 		reinit: function() {
-			this.destroy();
-			this.init();
+			setTimeout(function(){
+				this.destroy();
+				this.init();
+			}, 1000);
+			$('.container, .start-game').hide().removeClass('opened').show();
 		},
 		start: function() {
 			var oldtime = time;
@@ -122,10 +125,7 @@ var Cards = (function(){
 								$('.card').eq(n).css('opacity', 0);
 								tilesFlipped += 1;
 								if(tilesFlipped >= newCardType.length) {
-									setTimeout(function(){
-										Cards.reinit();
-									}, 1000);
-									$('.container, .start-game').hide().removeClass('opened').show();
+									Cards.reinit();
 								}
 								console.log();
 							}, 500);
