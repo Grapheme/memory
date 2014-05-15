@@ -378,6 +378,14 @@ body:after {
 .super-card.to-right {
   margin-left: 6.25rem;
 }
+.bot {
+  position: absolute;
+  width: 9.375rem;
+  height: 9.375rem;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

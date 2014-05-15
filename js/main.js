@@ -58,6 +58,10 @@ var Cards = (function(){
 				setTimeout( function() { Cards.start(); }, 3000 );
 				$('.container').addClass('opened');				
 			});
+			$(document).on('click touchstart', '.bot', function(){
+				Cards.bot();			
+			});
+
 
 		},
 		destroy: function() {
@@ -159,7 +163,7 @@ var Cards = (function(){
 				if(i == 8) {
 					clearInterval(int);
 				}
-			}, 250);
+			}, 400);
 		}
 	};
 })();
