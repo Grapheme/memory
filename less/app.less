@@ -184,8 +184,36 @@ body:after {
 	}
 }
 
+.last-slide {
+	.transition;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
+	z-index: 5;
+
+	.text {
+		width: 100%;
+		height: 57rem / @htmlFontSize;
+		margin-top: 257rem / @htmlFontSize;
+		background: url(../img/final.png) no-repeat center center;
+	}
+	.crown {
+		width: 245rem / @htmlFontSize;
+		height: 230rem / @htmlFontSize;
+		margin: 50rem / @htmlFontSize auto;
+		background: url(../img/logo.png) no-repeat center center e('/') 100% 100%;
+	}
+
+	&.opened {
+		left: 0;
+	}
+}
+
 .start-game {
-	.transition(left, 1s, ease-in-out);
+	.transition;
 	position: absolute;
 	top: 0;
 	left: 100%;
