@@ -17,6 +17,27 @@
 		left: 0;
 		right: 0;
 	}
+
+	.cigarbox {
+		.transition(all, 1s, ease-in-out);
+		opacity: 0;
+		position: absolute;
+	    bottom: -306rem / @htmlFontSize;	
+	    left: 50%;
+	    width: 170rem / @htmlFontSize;
+	    height: 306rem / @htmlFontSize;	    
+	    margin: 0 0 0 -85rem / @htmlFontSize;	
+
+	    img {
+	    	width: 100%;
+	    	height: 100%;
+	    }
+
+	    &.opened {
+	    	bottom: 10rem / @htmlFontSize;
+	    	opacity: 1;
+	    }
+	}
 }
 
 .cards-block {
