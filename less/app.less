@@ -53,9 +53,9 @@ body:after {
 	content: "";
 	position: absolute;
 	top: 0;
-	right: 3%;
-	width: 281rem / @htmlFontSize / 2;
-	height: 224rem / @htmlFontSize / 2;
+	right: 26rem / @htmlFontSize;
+	width: 141rem / @htmlFontSize;
+	height: 112rem / @htmlFontSize;
 
 	background: url(../img/shieldick.png) no-repeat 0 0 e('/') 100% 100%;
 
@@ -63,32 +63,16 @@ body:after {
 .enter {
 	.full-abs;
 	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
-
-	.chs-act {
-		.box-sizing;
+	
+	&:before {
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 50%;
-		width: 696rem / @htmlFontSize / 2;
-		height: 230rem / @htmlFontSize / 2;
-		margin: 0 0 0 -696rem / @htmlFontSize / 4;
-		padding: 120rem / @htmlFontSize / 2 0 0;
-
-		background: rgba(0, 92, 178, .25);
-		text-align: center;
-		text-transform: uppercase;
-
-		&:after {
-			content: "";
-			position: absolute;
-			top: 100%;
-			left: 0;
-			width: 0;
-			height: 0;
-			border-style: solid;
-			border-width: 108rem / @htmlFontSize / 2 696rem / @htmlFontSize / 4 0 696rem / @htmlFontSize / 4;
-			border-color: rgba(0, 92, 178, .25) transparent transparent transparent;
-		}
+		width: 368rem / @htmlFontSize;
+		height: 168rem / @htmlFontSize;
+		margin: 0 0 0 -368rem / @htmlFontSize / 2;
+		background: url(../img/flag.png) no-repeat;
 	}
 
 	.acts {
@@ -98,14 +82,45 @@ body:after {
 
 		.acts-li {
 			display: inline-block;
-			width: 444rem / @htmlFontSize / 2;
-			height: 208rem / @htmlFontSize / 2;
+			width: 222rem / @htmlFontSize;
+			height: 105rem / @htmlFontSize;
 			margin: 0 6rem / @htmlFontSize 0 0;
 
-			border: 1px solid #000;
+			background-image: url(../img/sprites.png);
+			background-repeat: no-repeat;
+			text-indent: -9999px;
 
 			&:last-child {
 				margin: 0;
+			}
+
+			&.drives {
+				background-position: 0 0;
+
+				&:active {
+					background-position: -250px 0;
+				}
+			}
+			&.plugins {
+				background-position: 0 -150px;
+
+				&:active {
+					background-position: -250px -150px;
+				}
+			}
+			&.ws {
+				background-position: 0 -300px;
+
+				&:active {
+					background-position: -250px -300px;
+				}
+			}
+			&.retail {
+				background-position: 0 -450px;
+
+				&:active {
+					background-position: -250px -450px;
+				}
 			}
 		}
 	}
@@ -117,25 +132,29 @@ body:after {
 
 	.start-btn {
 		position: absolute;
-		bottom: 151rem / @htmlFontSize / 3;
+		bottom: 76rem / @htmlFontSize;
 		left: 50%;
 		display: inline-block;
-		width: 444rem / @htmlFontSize / 2;
-		height: 208rem / @htmlFontSize / 2;
-		margin: 0 6rem / @htmlFontSize 0 -444rem / @htmlFontSize / 4;
+		width: 282rem / @htmlFontSize;
+		height: 105rem / @htmlFontSize;
+		margin: 0 6rem / @htmlFontSize 0 -282rem / @htmlFontSize / 2;
 
-		border: 1px solid #000;
+		background: url(../img/sprites.png) no-repeat 0 -600px;
+
+		&:active {
+			background-position: -350px -600px;
+		}
 	}
 
 	&:before {
 		content: "";
 		position: absolute;
-		top: 50%;
+		top: 100rem / @htmlFontSize;
 		left: 50%;
-		width: 870rem / @htmlFontSize / 2;
-		height: 856rem / @htmlFontSize / 2;
-		margin: -856rem / @htmlFontSize / 4 0 0 -870px / 4;
+		width: 494rem / @htmlFontSize;
+		height: 430rem / @htmlFontSize;
+		margin: 0 0 0 -430px / 2;
 
-		background: url(../img/logo.png) no-repeat center 0 e('/') 100% 100%;
+		background: url(../img/logo.png) no-repeat -38rem / @htmlFontSize center e('/') 100% 100%;
 	}
 }
