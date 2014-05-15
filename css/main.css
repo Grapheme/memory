@@ -107,6 +107,7 @@ textarea {
   bottom: 0;
   left: 0;
   background: url(../img/bg.jpg) no-repeat 0 0 / 100% 100%;
+  overflow: hidden;
 }
 .cards-block {
   -webkit-transition: all 0.5s ease;
@@ -312,17 +313,43 @@ body:after {
   background: url(../img/logo.png) no-repeat -2.375rem center / 100% 100%;
 }
 .super-card {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 1.5625rem;
+  left: 50%;
+  margin-left: -6.25rem;
+  -webkit-transform: translateY(150%);
+  -ms-transform: translateY(150%);
+  transform: translateY(150%);
+  opacity: 0;
   width: 12.5rem;
   height: 12.5rem;
   overflow: hidden;
   background: url(../img/super/back.png);
+  text-align: center;
 }
 .super-card img {
-  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.super-card:before {
+  content: "";
+  display: inline-block;
   height: 100%;
+  vertical-align: middle;
+}
+.super-card.loaded {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+.super-card.to-left {
+  margin-left: -18.75rem;
+}
+.super-card.to-right {
+  margin-left: 6.25rem;
 }
 /* ==========================================================================
    Helper classes

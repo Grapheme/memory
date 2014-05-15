@@ -20,12 +20,12 @@ var Cards = (function(){
 		sup_content = false,
 		cardtype = [
 
-			{name: 'crown', type: 'super', content: 'меньше мать его дыма'},
-			{name: 'less_smell', type: 'super', content: 'Cuase i got nothing to hide, cuz i true'},
+			{name: 'crown', type: 'normal'},
+			{name: 'less_smell', type: 'super', content: 'ls'},
 			{name: 'white_sheet', type: 'normal'},
-			{name: 'ac', type: 'normal'},
+			{name: 'ac', type: 'super', content: 'ac'},
 			{name: 'wp', type: 'normal'},
-			{name: 'ff', type: 'normal'},
+			{name: 'ff', type: 'super', content: 'ff'},
 			{name: 'night', type: 'normal'},
 			{name: 'vpech', type: 'normal'}
 
@@ -34,6 +34,7 @@ var Cards = (function(){
 		newCardType = [],
 		time = 200,
 		speed = 100,
+		super_count = 0,
 		coolDown = false;
 
 	return {
@@ -103,7 +104,17 @@ var Cards = (function(){
 				type = card.data('type');
 				if(clicked_name == card.data('id') && type == 'super')
 				{
-					console.log(card.data('content'));
+					if(super_count == 1) {
+						$('.super-card').addClass('to-left');
+					}
+					if(super_count == 2) {
+						$('.super-card').last().addClass('to-right');
+					}
+					$('.container').append('<div class="super-card"><img src="img/super/' + card.data('content') + '.png"></div>');
+					setTimeout(function(){
+						$('.super-card').addClass('loaded');
+					}, 500);
+					super_count++;
 				}
 				setTimeout(function(){
 					clicked.forEach(function(n) {
