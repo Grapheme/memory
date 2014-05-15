@@ -77,7 +77,7 @@ var Cards = (function(){
 				obj.destroy();
 				obj.init();
 			}, 1000);
-			$('.container, .start-game').hide().removeClass('opened').show();
+			$('.container, .start-game, .cigarbox').hide().removeClass('opened').show();
 		},
 		start: function() {
 			var oldtime = time;
