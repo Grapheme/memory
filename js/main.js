@@ -55,9 +55,8 @@ var Cards = (function(){
 				Cards.click($(this));
 			});
 			$(document).on('click touchstart', '.start-btn', function(){
-				$('.container').addClass('opened');
 				setTimeout( function() { Cards.start(); }, 3000 );
-				return false;
+				$('.container').addClass('opened');				
 			});
 
 		},
