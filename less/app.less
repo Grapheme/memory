@@ -1,5 +1,5 @@
 .container {
-	.transition(all, 1s, ease-in-out);
+	.transition(all, .5s, ease);
 	position: absolute;
 	top: 0; 
 	left: 100%;
@@ -56,6 +56,10 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+
+	&.removed {
+		opacity: 0;
+	}
 }
 
 .card-front {
@@ -324,4 +328,22 @@ body:after {
 	background-size: auto, 100% 100%;
 	background-position: center center, 0 0;
 	background-repeat: no-repeat;
+}
+
+.timer {
+	.transition;
+	position: absolute;
+	top: 15rem / @htmlFontSize;
+	left: 25rem / @htmlFontSize;
+	text-align: center;
+	font-size: 50em / @htmlFontSize;
+	width: 50rem / @htmlFontSize;
+	font-family: 'digital-7mono';
+	color: #fff;
+	z-index: 999;
+	opacity: 0;
+
+	&.started {
+		opacity: 1;
+	}
 }

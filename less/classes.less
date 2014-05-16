@@ -35,3 +35,66 @@
 	bottom: 0;
 	left: 0;
 }
+
+@keyframes shake{ 
+    0% { transform: rotate(3deg) scale(1); z-index: 2; }
+    10% { transform: rotate(-3deg) scale(1) ; }
+    20% { transform: rotate(3deg) scale(1.1) ; }
+    30% { transform: rotate(-3deg) scale(1.2) ; }
+    40% { transform: rotate(3deg) scale(1.2) ; }
+    50% { transform: rotate(-3deg) scale(1.2) ; }
+    60% { transform: rotate(3deg) scale(1.2) ; }
+    70% { transform: rotate(-3deg) scale(1.2) ; }
+    80% { transform: rotate(3deg) scale(1.1) ; }
+    90% { transform: rotate(-3deg) scale(1) ; }
+    100% { transform: rotate(0) scale(1); }
+}
+ 
+@-moz-keyframes shake{ 
+    0% { -moz-transform: rotate(3deg) scale(1); z-index: 2; }
+    10% { -moz-transform: rotate(-3deg) scale(1) ; }
+    20% { -moz-transform: rotate(3deg) scale(1.1) ; }
+    30% { -moz-transform: rotate(-3deg) scale(1.2) ; }
+    40% { -moz-transform: rotate(3deg) scale(1.2) ; }
+    50% { -moz-transform: rotate(-3deg) scale(1.2) ; }
+    60% { -moz-transform: rotate(3deg) scale(1.2) ; }
+    70% { -moz-transform: rotate(-3deg) scale(1.2) ; }
+    80% { -moz-transform: rotate(3deg) scale(1.1) ; }
+    90% { -moz-transform: rotate(-3deg) scale(1) ; }
+    100% { -moz-transform: rotate(0) scale(1); }
+}
+ 
+@-webkit-keyframes shake {
+    0% { -webkit-transform: rotate(3deg) scale(1); z-index: 2; }
+    10% { -webkit-transform: rotate(-3deg) scale(1) ; }
+    20% { -webkit-transform: rotate(3deg) scale(1.1) ; }
+    30% { -webkit-transform: rotate(-3deg) scale(1.2) ; }
+    40% { -webkit-transform: rotate(3deg) scale(1.2) ; }
+    50% { -webkit-transform: rotate(-3deg) scale(1.2) ; }
+    60% { -webkit-transform: rotate(3deg) scale(1.2) ; }
+    70% { -webkit-transform: rotate(-3deg) scale(1.2) ; }
+    80% { -webkit-transform: rotate(3deg) scale(1.1) ; }
+    90% { -webkit-transform: rotate(-3deg) scale(1) ; }
+    100% { -webkit-transform: rotate(0) scale(1); }
+}
+ 
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake; 
+    -webkit-animation-duration: 700ms; 
+    animation-duration: 700ms; 
+    -webkit-animation-iteration-count: 1; 
+    animation-iteration-count: 1; 
+    -webkit-animation-timing-function: linear; 
+    animation-timing-function: linear;
+ 
+    -moz-animation-name: shake; 
+    -moz-animation-duration: 700ms; 
+    -moz-animation-iteration-count: 1; 
+    -moz-animation-timing-function: linear;
+ 
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 700ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}

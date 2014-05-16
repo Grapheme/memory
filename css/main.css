@@ -20,6 +20,128 @@
   -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.5);
   box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.5);
 }
+@keyframes shake {
+  0% {
+    transform: rotate(3deg) scale(1);
+    z-index: 2;
+  }
+  10% {
+    transform: rotate(-3deg) scale(1);
+  }
+  20% {
+    transform: rotate(3deg) scale(1.1);
+  }
+  30% {
+    transform: rotate(-3deg) scale(1.2);
+  }
+  40% {
+    transform: rotate(3deg) scale(1.2);
+  }
+  50% {
+    transform: rotate(-3deg) scale(1.2);
+  }
+  60% {
+    transform: rotate(3deg) scale(1.2);
+  }
+  70% {
+    transform: rotate(-3deg) scale(1.2);
+  }
+  80% {
+    transform: rotate(3deg) scale(1.1);
+  }
+  90% {
+    transform: rotate(-3deg) scale(1);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+@-moz-keyframes shake {
+  0% {
+    -moz-transform: rotate(3deg) scale(1);
+    z-index: 2;
+  }
+  10% {
+    -moz-transform: rotate(-3deg) scale(1);
+  }
+  20% {
+    -moz-transform: rotate(3deg) scale(1.1);
+  }
+  30% {
+    -moz-transform: rotate(-3deg) scale(1.2);
+  }
+  40% {
+    -moz-transform: rotate(3deg) scale(1.2);
+  }
+  50% {
+    -moz-transform: rotate(-3deg) scale(1.2);
+  }
+  60% {
+    -moz-transform: rotate(3deg) scale(1.2);
+  }
+  70% {
+    -moz-transform: rotate(-3deg) scale(1.2);
+  }
+  80% {
+    -moz-transform: rotate(3deg) scale(1.1);
+  }
+  90% {
+    -moz-transform: rotate(-3deg) scale(1);
+  }
+  100% {
+    -moz-transform: rotate(0) scale(1);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(3deg) scale(1);
+    z-index: 2;
+  }
+  10% {
+    -webkit-transform: rotate(-3deg) scale(1);
+  }
+  20% {
+    -webkit-transform: rotate(3deg) scale(1.1);
+  }
+  30% {
+    -webkit-transform: rotate(-3deg) scale(1.2);
+  }
+  40% {
+    -webkit-transform: rotate(3deg) scale(1.2);
+  }
+  50% {
+    -webkit-transform: rotate(-3deg) scale(1.2);
+  }
+  60% {
+    -webkit-transform: rotate(3deg) scale(1.2);
+  }
+  70% {
+    -webkit-transform: rotate(-3deg) scale(1.2);
+  }
+  80% {
+    -webkit-transform: rotate(3deg) scale(1.1);
+  }
+  90% {
+    -webkit-transform: rotate(-3deg) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1);
+  }
+}
+.shake {
+  animation-name: shake;
+  animation-duration: 700ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  -moz-animation-name: shake;
+  -moz-animation-duration: 700ms;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 700ms;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -29,6 +151,13 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+@font-face {
+  font-family: 'digital-7mono';
+  src: url('../fonts/digital-7_mono-webfont.eot');
+  src: url('../fonts/digital-7_mono-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/digital-7_mono-webfont.woff') format('woff'), url('../fonts/digital-7_mono-webfont.ttf') format('truetype'), url('../fonts/digital-7_mono-webfont.svg#digital-7mono') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 button,
 input,
@@ -101,8 +230,8 @@ textarea {
    Author's custom styles
    ========================================================================== */
 .container {
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   position: absolute;
   top: 0;
   left: 100%;
@@ -153,6 +282,9 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.card.removed {
+  opacity: 0;
 }
 .card-front {
   position: absolute;
@@ -430,6 +562,23 @@ body:after {
   background-size: auto, 100% 100%;
   background-position: center center, 0 0;
   background-repeat: no-repeat;
+}
+.timer {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 0.9375rem;
+  left: 1.5625rem;
+  text-align: center;
+  font-size: 3.125em;
+  width: 3.125rem;
+  font-family: 'digital-7mono';
+  color: #fff;
+  z-index: 999;
+  opacity: 0;
+}
+.timer.started {
+  opacity: 1;
 }
 /* ==========================================================================
    Helper classes

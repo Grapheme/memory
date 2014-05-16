@@ -5,7 +5,7 @@ document.ontouchmove = function(e){ e.preventDefault(); };
 var Nav = (function(){
 	return {
 		init: function() {
-			$(document).on('click touchstart', '.drives', function(){
+			$(document).on('click touchstart', '.plugins', function(){
 				$('.start-game').addClass('opened');
 			});
 		}
@@ -35,7 +35,10 @@ var Cards = (function(){
 		time = 200,
 		speed = 100,
 		super_count = 0,
-		coolDown = false;
+		coolDown = false,
+		fail = 0,
+		timer_time = 60,
+		touch_allow = true;
 
 	return {
 		init: function() {
@@ -51,15 +54,21 @@ var Cards = (function(){
 				}
 			});
 
-			$(document).on('click touchstart', '.card', function(){
+			$(document).on('click', '.card', function(){
 				Cards.click($(this));
+			});
+			$(document).on('touchstart', '.card', function(){
+				if(touch_allow)
+				{
+					Cards.click($(this));
+				}
 			});
 			$(document).on('click touchstart', '.start-btn', function(){
 				setTimeout( function() { Cards.start(); }, 3000 );
 				$('.container').addClass('opened');
 			});
 			$(document).on('click touchstart', '.bot', function(){
-				Cards.bot();
+				Cards.hint();
 			});
 
 
@@ -88,11 +97,29 @@ var Cards = (function(){
 				}, time += speed );
 			});
 			time = oldtime;
+			this.timer();
+		},
+		timer: function() {
+			var timer_default = timer_time;
+			$('.timer').text(timer_time);
+			$('.timer').addClass('started');
+			timerInt = setInterval(function(){
+				if(timer_time == 0) {
+					clearInterval(timerInt);
+					Cards.bot();
+					$('.timer').removeClass('started');
+					timer_time = timer_default;
+				} else {
+					$('.timer').text(timer_time);
+					timer_time--;
+				}
+			}, 1000);
 		},
 		finish: function() {
 			setTimeout( function() { $('.cigarbox').addClass('opened'); }, 1000 );
 			$('.super-card').addClass('opened');
 			setTimeout( function() { Cards.reinit(); }, 5000 );
+			timer_time = 0;
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -112,9 +139,10 @@ var Cards = (function(){
 			}
 			if( i == 2 && !coolDown ) {
 				coolDown = true;
+				var isRight = (clicked_name == card.data('id'));
 
 				type = card.data('type');
-				if(clicked_name == card.data('id') && type == 'super')
+				if(isRight && type == 'super')
 				{
 					if(super_count == 1) {
 						$('.super-card').addClass('to-left');
@@ -130,22 +158,23 @@ var Cards = (function(){
 				}
 				setTimeout(function(){
 					clicked.forEach(function(n) {
-						if(clicked_name == card.data('id'))
+						if(isRight)
 						{
 							setTimeout(function(){
-								$('.card').eq(n).css('opacity', 0);
+								$('.card').eq(n).addClass('removed');
 								tilesFlipped += 1;
 								if(tilesFlipped >= newCardType.length) {
 									//Cards.reinit();
 									Cards.finish();
 								}
-								console.log();
 							}, 500);
+
 						} else {
 							setTimeout(function(){
-								$('.card').eq(n).removeClass('flip').removeClass('flip');
+								$('.card').eq(n).removeClass('flip');
 							}, 500);
 						}
+						console.log();
 					});
 
 					setTimeout( function(){
@@ -155,11 +184,37 @@ var Cards = (function(){
 					}, 100);
 					
 				}, 100);
+
+				if(!isRight) {
+					fail++;
+				}
+				if(fail == 3) {
+					fail = 0;
+					setTimeout(function(){
+						Cards.hint();
+					}, 1000);
+				}
 			}
+		},
+		hint: function() {
+			var thatcard;
+			var i = true;
+			$.each(cardtype, function(index, value) {
+				thatcard = $('.card[data-id=' + value.name + ']');
+				if(!thatcard.hasClass('removed') && i)
+				{
+					thatcard.addClass('shake');
+					i = false;
+				}
+			});
+			setTimeout(function(){
+				$('.card').removeClass('shake');
+			}, 150*5);
 		},
 		bot: function() {
 			var bot_array = [];
 			var i = 0;
+			touch_allow = false;
 			$.each(cardtype, function(index, value) {
 				bot_array.push(value.name);
 			});
@@ -168,6 +223,7 @@ var Cards = (function(){
 				i++;
 				if(i == 8) {
 					clearInterval(int);
+					touch_allow = true;
 				}
 			}, 700);
 		}
