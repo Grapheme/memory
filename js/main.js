@@ -4,10 +4,14 @@ document.ontouchmove = function(e){ e.preventDefault(); };
 
 var Nav = (function(){
 	return {
-		init: function() {
-			$(document).on('click touchstart', '.plugins', function(){
-				$('.start-game').addClass('opened');
-			});
+		start: function() {
+			$('section').removeClass('faded');
+			$('section[data-id=1]').addClass('faded');
+		},
+		slide: function(id) {
+			var oid = id - 1;
+			$('section[data-id=' + oid + ']').removeClass('faded');
+			$('section[data-id=' + id + ']').addClass('faded');
 		}
 	};
 })();
@@ -30,6 +34,7 @@ var Cards = (function(){
 			{name: 'vpech', type: 'normal'}
 
 		],
+		shuffleCards = [],
 		tilesFlipped = 0,
 		newCardType = [],
 		time = 200,
@@ -38,10 +43,33 @@ var Cards = (function(){
 		coolDown = false,
 		fail = 0,
 		timer_time = 60,
-		touch_allow = true;
+		fail_try = 3,
+		touch_allow = true
+		interval_allow = true
+		interval_stop = false;
+
+	function interval(time) {
+		setTimeout(function () {
+			interval_allow = true;
+	        if(time == 0 || interval_stop) {
+				interval_allow = false;
+				Cards.bot();
+				$('.timer').removeClass('started');
+				time = timer_time;
+			} else {
+				$('.timer').text(time);
+				time--;
+			}
+			if(interval_allow)
+			{
+				interval(time);
+			}
+	    }, 1000);
+	}
 
 	return {
 		init: function() {
+			shuffleCards = this.shuffle(cardtype);
 			$.each(cardtype, function(index, value) {
 				for(var i = 0; i < 2; i++) newCardType.push(value);
 			});
@@ -65,7 +93,7 @@ var Cards = (function(){
 			});
 			$(document).on('click touchstart', '.start-btn', function(){
 				setTimeout( function() { Cards.start(); }, 3000 );
-				$('.container').addClass('opened');
+				Nav.slide(2);
 			});
 			$(document).on('click touchstart', '.bot', function(){
 				Cards.hint();
@@ -86,7 +114,6 @@ var Cards = (function(){
 				obj.destroy();
 				obj.init();
 			}, 1000);
-			$('.container, .start-game, .cigarbox').hide().removeClass('opened').show();
 		},
 		start: function() {
 			var oldtime = time;
@@ -100,26 +127,29 @@ var Cards = (function(){
 			this.timer();
 		},
 		timer: function() {
-			var timer_default = timer_time;
+			interval_stop = false;
 			$('.timer').text(timer_time);
 			$('.timer').addClass('started');
-			timerInt = setInterval(function(){
-				if(timer_time == 0) {
-					clearInterval(timerInt);
-					Cards.bot();
-					$('.timer').removeClass('started');
-					timer_time = timer_default;
-				} else {
-					$('.timer').text(timer_time);
-					timer_time--;
-				}
-			}, 1000);
+			interval(timer_time);
 		},
 		finish: function() {
-			setTimeout( function() { $('.cigarbox').addClass('opened'); }, 1000 );
 			$('.super-card').addClass('opened');
-			setTimeout( function() { Cards.reinit(); }, 5000 );
-			timer_time = 0;
+			setTimeout( function() { $('.cigarbox').addClass('opened'); }, 1000 );
+			setTimeout( function(){
+				Nav.slide(3);
+				setTimeout(function(){
+					Nav.slide(4);
+					setTimeout(function(){
+						$('.cigarbox').removeClass('opened');
+					}, 1000);
+					setTimeout( function(){
+						Nav.start();
+						//$('.last-slide').css('opacity', 0);
+					}, 5000);
+				}, 6000);
+			}, 6000);
+			setTimeout( function() { Cards.reinit(); }, 10000 );
+			interval_stop = true;
 		},
 		shuffle: function(o) {
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -174,7 +204,6 @@ var Cards = (function(){
 								$('.card').eq(n).removeClass('flip');
 							}, 500);
 						}
-						console.log();
 					});
 
 					setTimeout( function(){
@@ -185,10 +214,12 @@ var Cards = (function(){
 					
 				}, 100);
 
-				if(!isRight) {
+				if(isRight) {
+					fail = 0;
+				} else {
 					fail++;
 				}
-				if(fail == 3) {
+				if(fail == fail_try) {
 					fail = 0;
 					setTimeout(function(){
 						Cards.hint();
@@ -199,9 +230,9 @@ var Cards = (function(){
 		hint: function() {
 			var thatcard;
 			var i = true;
-			$.each(cardtype, function(index, value) {
+			$.each(shuffleCards, function(index, value) {
 				thatcard = $('.card[data-id=' + value.name + ']');
-				if(!thatcard.hasClass('removed') && i)
+				if(!thatcard.hasClass('removed') && !thatcard.hasClass('flip') && i)
 				{
 					thatcard.addClass('shake');
 					i = false;
@@ -216,8 +247,12 @@ var Cards = (function(){
 			var i = 0;
 			touch_allow = false;
 			$.each(cardtype, function(index, value) {
-				bot_array.push(value.name);
+				if(!$('.card[data-id=' + value.name + ']').hasClass('removed'))
+				{
+					bot_array.push(value.name);
+				}
 			});
+			this.shuffle(bot_array);
 			int = setInterval(function(){
 				$('.card[data-id=' + bot_array[i] + ']').trigger('click');
 				i++;
@@ -230,6 +265,6 @@ var Cards = (function(){
 	};
 })();
 
-Nav.init();
+Nav.start();
 Cards.init();
 

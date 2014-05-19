@@ -2,14 +2,12 @@
 	.transition(all, .5s, ease);
 	position: absolute;
 	top: 0; 
-	left: 100%;
-	right: -100%;
 	bottom: 0;
-
+	opacity: 0;
 	width: 100%;
 	height: 100%;
 
-	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
+	//background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
 
 	z-index: 2;
 
@@ -188,48 +186,17 @@ body:after {
 	}
 }
 
-.last-slide {
-	.transition;
-	position: absolute;
-	top: 0;
-	left: 100%;
-	width: 100%;
-	height: 100%;
-	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
-	z-index: 5;
-
-	.text {
-		width: 100%;
-		height: 57rem / @htmlFontSize;
-		margin-top: 257rem / @htmlFontSize;
-		background: url(../img/final.png) no-repeat center center;
-	}
-	.crown {
-		width: 245rem / @htmlFontSize;
-		height: 230rem / @htmlFontSize;
-		margin: 50rem / @htmlFontSize auto;
-		background: url(../img/logo.png) no-repeat center center e('/') 100% 100%;
-	}
-
-	&.opened {
-		left: 0;
-	}
-}
-
 .start-game {
 	.transition;
 	position: absolute;
 	top: 0;
-	left: 100%;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 1;
+	opacity: 0;
 
-	background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
-
-	&.opened {
-		left: 0;
-	}
+	//background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
 
 	.start-btn {
 		position: absolute;
@@ -316,23 +283,80 @@ body:after {
 }
 
 .crown-slide {
-	.transition(left, 1s, ease-in-out);
+	.transition;
 	position: absolute;
 	top: 0;
-	left: 100%;
 	width: 100%;
 	height: 100%;
-	z-index: 9999;
+	z-index: 5;
+	opacity: 0;
 
-	background-image: url(../img/super-final.png), url(../img/bg.jpg);
-	background-size: auto, 100% 100%;
-	background-position: center center, 0 0;
-	background-repeat: no-repeat;
+	/*background-image: url(../img/bg.jpg);
+	background-size: 100% 100%;
+	background-position: 0 0;
+	background-repeat: no-repeat;*/
+
+	.crown-text {
+		position: absolute;
+		width: 100%;
+		height: 350rem / @htmlFontSize;
+		top: 150rem / @htmlFontSize;
+		font-family: 'UnicumCondLightRegular';
+		text-align: center;
+		color: #fff;
+		font-size: 90rem / @htmlFontSize;
+		text-transform: uppercase;
+		line-height: 90rem / @htmlFontSize;
+		
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		height: 267rem / @htmlFontSize;
+		width: 569rem / @htmlFontSize;
+		background: url(../img/crown.png) no-repeat;
+		background-size: 100% 100%;
+		left: 50%;
+		margin-left: -325rem / @htmlFontSize;
+	}
+}
+
+.last-slide {
+	.transition;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	//background: url(../img/bg.jpg) no-repeat 0 0 e('/') 100% 100%;
+	z-index: 6;
+
+	.text {
+		width: 100%;
+		height: 57rem / @htmlFontSize;
+		margin-top: 200rem / @htmlFontSize;
+		font-family: 'UnicumCondLightRegular';
+		text-align: center;
+		color: #fff;
+		font-size: 90em / @htmlFontSize;
+		text-transform: uppercase;
+		line-height: 90rem / @htmlFontSize;
+		-webkit-font-smoothing: antialised
+	}
+	.crown {
+		width: 245rem / @htmlFontSize;
+		height: 230rem / @htmlFontSize;
+		margin: 50rem / @htmlFontSize auto;
+		background: url(../img/logo.png) no-repeat center center e('/') 100% 100%;
+	}
+
 }
 
 .timer {
 	.transition;
-	position: absolute;
+	position: fixed;
 	top: 15rem / @htmlFontSize;
 	left: 25rem / @htmlFontSize;
 	text-align: center;
@@ -346,4 +370,9 @@ body:after {
 	&.started {
 		opacity: 1;
 	}
+}
+
+.faded {
+	opacity: 1;
+	z-index: 15;
 }
